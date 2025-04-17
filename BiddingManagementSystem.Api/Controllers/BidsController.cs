@@ -33,7 +33,7 @@ namespace BiddingManagementSystem.Api.Controllers
             return Ok("Bid submitted successfully.");
         }
 
-        [HttpGet("tender/{tenderId}")]
+        [HttpGet("tenders/{tenderId}")]
         public async Task<IActionResult> GetBidsByTender(int tenderId)
         {
             var query = new GetBidsByTenderQuery { TenderId = tenderId };

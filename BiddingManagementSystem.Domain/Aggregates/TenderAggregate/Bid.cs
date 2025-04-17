@@ -12,7 +12,10 @@ namespace BiddingManagementSystem.Domain.Aggregates.TenderAggregate
         public decimal Amount { get; private set; }
         public DateTime BidDate { get; private set; }
         public BidStatus Status { get; private set; }
+        
+        [System.Text.Json.Serialization.JsonIgnore]
         public Tender Tender { get; private set; }
+        
         public User User { get; private set; }
         public Evaluation Evaluation { get; private set; }
         public ICollection<BidDocument> Documents { get; private set; }

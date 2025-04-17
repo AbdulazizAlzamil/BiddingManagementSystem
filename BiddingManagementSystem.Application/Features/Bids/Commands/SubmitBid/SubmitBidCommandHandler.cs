@@ -21,6 +21,9 @@ namespace BiddingManagementSystem.Application.Features.Bids.Commands.SubmitBid
             var tender = await _tenderRepository.GetByIdAsync(request.TenderId);
             if (tender == null) throw new ArgumentException("Tender not found.");
 
+            if (tender.Status != TenderStatus.Published)
+                throw new InvalidOperationException("Bids can only be submitted to published tenders.");
+
             var user = await _userRepository.GetByIdAsync(request.UserId);
             if (user == null) throw new ArgumentException("User not found.");
 

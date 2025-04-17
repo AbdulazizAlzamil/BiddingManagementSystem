@@ -15,7 +15,10 @@ namespace BiddingManagementSystem.Domain.Aggregates.TenderAggregate
         public TenderStatus Status { get; private set; }
         public int UserId { get; private set; }
         public User User { get; private set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
         public ICollection<Bid> Bids { get; private set; }
+
         public ICollection<TenderDocument> Documents { get; private set; }
         public ICollection<TenderCategory> Categories { get; private set; }
         public int? WinningBidId { get; private set; }
