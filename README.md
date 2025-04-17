@@ -64,7 +64,7 @@ Open `appsettings.json` in the `BiddingManagementSystem.Api` project and update 
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=YOUR_SERVER;Database=BiddingManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true"
+  "DefaultConnection": "Server=YOUR_SERVER;Database=BiddingManagementSystem;Integrated Security=SSPI;TrustServerCertificate=True;"
 },
 "Jwt": {
   "SecretKey": "YOUR_SECRETKEY",
