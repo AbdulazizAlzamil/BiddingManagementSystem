@@ -64,7 +64,7 @@ namespace BiddingManagementSystem.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTender(int id, [FromBody] UpdateTenderRequest request)
         {
-            var userId = int.Parse(User.FindFirst("sub")?.Value);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             var result = await _mediator.Send(new UpdateTenderCommand(id, request, userId));
             if (!result) return NotFound();
             return NoContent();
@@ -78,7 +78,7 @@ namespace BiddingManagementSystem.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTender(int id)
         {
-            var userId = int.Parse(User.FindFirst("sub")?.Value);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             var result = await _mediator.Send(new DeleteTenderCommand(id, userId));
             if (!result) return NotFound();
             return NoContent();

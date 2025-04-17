@@ -23,10 +23,12 @@ public class TenderRepository : ITenderRepository
     public async Task<Tender> GetByIdAsync(int id)
     {
         return await _context.Tenders
-           .Include(t => t.Categories)
-           .Include(t => t.Bids)
+            .Include(t => t.Categories)
+            .Include(t => t.Bids)
                 .ThenInclude(b => b.Evaluation)
-           .FirstOrDefaultAsync(t => t.Id == id);
+            .Include(t => t.Bids)
+                .ThenInclude(b => b.User)
+            .FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public async Task UpdateAsync(Tender tender)

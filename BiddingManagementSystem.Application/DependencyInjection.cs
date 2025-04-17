@@ -4,6 +4,7 @@ using BiddingManagementSystem.Application.Interfaces;
 using BiddingManagementSystem.Application.Services;
 using BiddingManagementSystem.Application.Features.Bids.Commands.DeleteBidDocument;
 using MediatR;
+using BiddingManagementSystem.Infrastructure.Services;
 
 namespace BiddingManagementSystem.Application
 {
@@ -20,6 +21,8 @@ namespace BiddingManagementSystem.Application
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<ITenderService, TenderService>();
             services.AddScoped<IBidService, BidService>();
+            services.AddScoped<IEmailService, SmtpEmailService>();
+
 
             return services;
         }

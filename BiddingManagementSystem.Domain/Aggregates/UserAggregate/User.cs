@@ -1,6 +1,8 @@
 using BiddingManagementSystem.Domain.Aggregates.TenderAggregate;
 using BiddingManagementSystem.Domain.Enums;
 using BiddingManagementSystem.Domain.ValueObjects;
+using System.Text.RegularExpressions;
+using System.Transactions;
 
 namespace BiddingManagementSystem.Domain.Aggregates.UserAggregate
 {
@@ -35,6 +37,10 @@ namespace BiddingManagementSystem.Domain.Aggregates.UserAggregate
 
         public void UpdateEmail(string newEmail)
         {
+            if(string.IsNullOrWhiteSpace(newEmail) || !Regex.IsMatch(newEmail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                throw new ArgumentException("Invalid email format.");
+            }
             Email = newEmail;
         }
 
