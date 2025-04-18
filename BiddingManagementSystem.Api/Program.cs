@@ -1,3 +1,5 @@
+using BiddingManagementSystem.Application.Features.Bids.Commands.ScoreBid;
+
 namespace BiddingManagementSystem.Api
 {
     public class Program
@@ -10,6 +12,11 @@ namespace BiddingManagementSystem.Api
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerServices();
+
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SchemaFilter<ScoreBidCommandSchemaFilter>();
+            });
 
             builder.Services.AddApiServices(builder.Configuration);
 
